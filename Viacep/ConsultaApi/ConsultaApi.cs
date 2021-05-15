@@ -16,7 +16,7 @@ namespace Viacep.ConsultaApi
 
              if (response.StatusCode != System.Net.HttpStatusCode.OK)
              {
-                 Console.WriteLine($"Cep digitado invalido!! \nOcep digitado foi :{cep}");
+                 Console.WriteLine($"Cep digitado invalido!! \nO cep digitado foi :{cep}");
                  return;
              }
 
