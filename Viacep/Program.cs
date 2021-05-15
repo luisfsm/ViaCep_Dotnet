@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Net;
 using System.Net.Http;
 
@@ -8,6 +9,7 @@ namespace Viacep
     {
         static void Main(string[] args)
         {
+            ViacepRetorno retorno;
             Console.WriteLine("Digite um Cep :");
             string cep = Console.ReadLine();
             string url = $"https://viacep.com.br/ws/" + cep + "/json/";
@@ -21,8 +23,10 @@ namespace Viacep
                     Console.WriteLine($"Entrada de Cep Invalida. Cep Digitado: {0} ",cep);
                     return;
                 }
-                Console.WriteLine(bodyResponse);
 
+                retorno = JsonConvert.DeserializeObject<ViacepRetorno>(bodyResponse);
+
+                Console.WriteLine($" seu cep : { retorno.cep} \n Seu Endereco : {retorno.logradouro}");
             }
         }
     }
